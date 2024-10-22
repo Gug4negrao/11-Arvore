@@ -72,6 +72,7 @@ void menu()
 		}
 
 		system("pause"); // somente no windows
+
 	}
 }
 
@@ -170,16 +171,26 @@ void exibirElementosArvore(NO* no)
 	if (no == NULL) {
 		return;
 	}
-
-	cout << no->valor << endl;
-	exibirElementosArvore(no->esq);
-	exibirElementosArvore(no->dir);
-
+	else {
+		exibirElementosArvore(no->esq);
+		cout << no->valor << endl;
+		exibirElementosArvore(no->dir);
+	}
 }
 
 void buscarElementoArvore(NO* no, int valor)
 {
-
+	if (no == NULL) {
+		cout << "Elemento nao encontrado" << endl;
+		return;
+	}
+	else if (no->valor == valor) {
+		cout << "Elemento encontrado" << endl;
+		return;
+	}
+	else {
+		no->valor < valor ? buscarElementoArvore(no->dir, valor) : buscarElementoArvore(no->esq, valor);
+	}
 
 }
 
